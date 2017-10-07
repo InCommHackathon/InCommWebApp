@@ -27,16 +27,8 @@ public class ApiBridge {
         return accountApi;
     }
 
-    public void setAccountApi(AccountApi accountApi) {
-        this.accountApi = accountApi;
-    }
-
     public TransactionApi getTransactionApi() {
         return transactionApi;
-    }
-
-    public void setTransactionApi(TransactionApi transactionApi) {
-        this.transactionApi = transactionApi;
     }
 
     public static void main(String[] args) {

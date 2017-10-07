@@ -9,8 +9,6 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Properties;
 
 
@@ -21,6 +19,8 @@ public class Email {
 
     private String emailAddress;
     private String emailPassword;
+
+    private String message = "";
 
     private final int SMTP = 0;
     private final int IMAP = 1;
@@ -65,15 +65,15 @@ public class Email {
         if(smtpOrImap == SMTP) {
             props.put("mail.smtp.auth", "true");
             props.put("mail.smtp.starttls.enable", "true");
-            props.put("mail.smtp.host", "smtp.office365.com");
+            props.put("mail.smtp.host", "smtp.gmail.com");
             props.put("mail.smtp.port", "587");
         }
         else if(smtpOrImap == IMAP)
         {
             props.put("mail.imap.auth", "true");
             props.put("mail.imap.starttls.enable", "true");
-            props.put("mail.imap.host", "outlook.office365.com");
-            props.put("mail.smtp.port", "993");
+            props.put("mail.imap.host", "pop.gmail.com");
+            props.put("mail.smtp.port", "995");
         }
 
         javax.mail.Session session = Session.getInstance(props,
@@ -85,22 +85,23 @@ public class Email {
         return session;
     }
 
-    public void sendEmail(ArrayList<String> emailAddressArrayList) throws MessageNotSentException {
+    public void setMessage(String message)
+    {
+        this.message = message;
+    }
+
+    public void sendEmail() throws MessageNotSentException {
         try {
-            InternetAddress[] addresses = new InternetAddress[emailAddressArrayList.size()];
-            for (int i = 0; i < emailAddressArrayList.size(); i++) {
-                addresses[i] = new InternetAddress(emailAddressArrayList.get(i));
-            }
+            InternetAddress address = new InternetAddress("inventoryexception@gmail.com");
             Session session = login(SMTP);
             Message message = new MimeMessage(session);
-            message.setFrom(new InternetAddress("postoffice@kennesaw.edu", "KSU Post Office"));
-            message.setRecipients(Message.RecipientType.TO,
-                    addresses);
-            message.setSubject("Letter");
+            message.setFrom(new InternetAddress("shadyshellcorp@gmail.com", "Receipt"));
+            message.setRecipient(Message.RecipientType.TO,
+                    address);
+            message.setSubject("Purchase Confirmation");
             //message.setContent("You have a letter", "text/html");
-            message.setText("");
+            message.setContent(this.message, "text/html");
             Transport.send(message);
-            storeMail(message);
         } catch (AddressException e) {
             e.printStackTrace();
             throw new MessageNotSentException();
@@ -113,25 +114,11 @@ public class Email {
         }
     }
 
-    public void storeMail(Message message) throws MessagingException {
-        Session session = login(IMAP);
-        Store store = session.getStore("imap");
-        store.connect("outlook.office365.com", getEmailAddress(), getEmailPassword());
-        Folder folder = store.getFolder("Sent");
-        folder.open(Folder.READ_WRITE);
-        message.setFlag(Flags.Flag.SEEN, true);
-        folder.appendMessages(new Message[] {message});
-
-        store.close();
-    }
-
 
 
     public static void main(String[] args) throws MessageNotSentException {
         Email email = new Email();
         email.openCredentials();
-        ArrayList<String> emails = new ArrayList<>(Arrays.asList("mandre3@students.kennesaw.edu"));
-        email.sendEmail(emails);
-
+        email.sendEmail();
     }
 }
