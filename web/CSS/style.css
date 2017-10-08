@@ -1,4 +1,4 @@
-#FA4747
+
 body{
 	background:#fff;
 	font-family: 'Roboto', sans-serif;
@@ -10,9 +10,6 @@ body{
 	-moz-transition: 0.5s all;
 	-ms-transition: 0.5s all;
 }
- #saveForm{
-	 padding-right: 50px;
- }
 ul{
 	padding: 0;
 	margin: 0;
@@ -132,7 +129,7 @@ a.item_add {
 	left: 1px;
 	border: none;
 	outline: none;
-	background:#FA4747;
+	background:#FF4A4A;
 	width: 100%;
 	height: 40px;
 	margin: 0;
@@ -387,12 +384,12 @@ height: 35px;
 	text-decoration: none;
 	color:#fff;
 	font-size:1.2em;
-	background: #FA4747;
+	background: #FF4A4A;
 	padding: 0.4em 1em;
 	border-radius:5px;
 }
 .banner-text a:hover{
-	color: #FA4747;
+	color: #FF4A4A;
 	background: #fff;
 }
 /*--content-top--*/
@@ -432,7 +429,7 @@ height: 35px;
   text-decoration: none;
 }
 .grid-top p a:hover{
-	  color: #FA4747;
+	  color: #FF4A4A;
 }
 .grid-in {
   padding: 2em 0 0;
@@ -647,7 +644,7 @@ ul.nav-bottom li  a{
 	  margin: 0.2em 0;
 }
 ul.nav-bottom li  a:hover{
-	color:#FA4747;
+	color:#FF4A4A;
 }
 .amet-sed p{
 	color:#989696;
@@ -662,7 +659,7 @@ ul.nav-bottom li  a:hover{
 }
 /*-- agileits --*/
 .footer-class  p a{
-	color:#FA4747;
+	color:#FF4A4A;
 	text-decoration:none;
 }
 .footer-class  p a:hover{
@@ -689,14 +686,14 @@ padding:1em 0 0;
   width: 36%;
   color: #FFF;
   font-size: 1em;
-  background:#FA4747;
+  background:#FF4A4A;
   border: none;
   outline:none;
   padding: 0.5em;
 }
 .amet-sed input[type="submit"]:hover {
 background: #fff;
-color:#FA4747;
+color:#FF4A4A;
 }
 ul.social{
 	padding:1em 0 0;
@@ -770,7 +767,7 @@ ul.social li i:hover{
 .send input[type="submit"]{
 	width: 14%;
 	font-size: 1.1em;
-	background:#FA4747;
+	background:#FF4A4A;
 	padding: 0.4em 0.8em;
 	text-align: center;
 	color: #fff;
@@ -805,7 +802,7 @@ ul.social li i:hover{
 	color: #626262;
 }
 .address-more p a:hover{
-	color: #FA4747;
+	color: #FF4A4A;
 }
 /*-- w3layouts --*/
 /*--//contact--*/
@@ -1201,13 +1198,13 @@ p.tun {
 	color:#fff;
 	font-size:1.1em;
 	font-weight:600;
-	background:#FA4747;
+	background:#FF4A4A;
 	padding: 0.5em 1.5em;
 	text-transform: uppercase;
 }
 .pro-grid span:hover{
 	background:#fff;
-	color:#FA4747;
+	color:#FF4A4A;
 }
 /*--//product--*/
 .pl-lft {
@@ -1227,7 +1224,7 @@ p.tun {
 	text-decoration:none;
 }
 .pro-tp p a:hover{
-color:#FA4747;
+color:#FF4A4A;
 }
 .pro-tp h6 a{
     color: #000;
@@ -1237,7 +1234,7 @@ color:#FA4747;
 	text-decoration:none;
 }
 .pro-tp h6 a:hover{
-color:#FA4747;
+color:##FF4A4A;
 }
 .pro-tp {
     margin: 0 0 2em;
@@ -1274,7 +1271,7 @@ color:#FA4747;
     padding-right: 5em;
 }
 .grow {
-    background-color: #FA4747;
+    background-color: #FF4A4A;
     padding: 1.3em 0;
 }
 .grow h2 {
@@ -1285,6 +1282,8 @@ color:#FA4747;
 }
 .pro-du {
     padding: 4em 0;
+
+
 }
 .ca-rt {
     float: right;
@@ -1318,7 +1317,7 @@ color:#FA4747;
     margin: 1em 0;
 }
 .single-para h5 {
-  color:FA4747;
+  color:##FF4A4A;
   font-size: 1.7em;
   border-bottom: 1px solid #C4C3C3;
   padding: 0.3em 0;
@@ -1370,7 +1369,7 @@ ul.tag-men li span.women1{
 a.add-cart {
   text-decoration: none;
   color: #fff;
-  background: FA4747;
+  background: #FF4A4A;
   padding: 0.4em 0.8em;
   font-size:0.9em;
   text-transform: uppercase;
@@ -1409,7 +1408,7 @@ h3.real{
 	color:#000;
 }
 .star-on a:hover{
-	color:FA4747;
+	color:#FF4A4A;
 }
 /*----*/
 .cd-tabs-navigation {
@@ -1572,7 +1571,7 @@ a.add-re:hover{
 	position: relative;
 }
 .news-letter {
-	color: #FA4747;
+	color: #FF4A4A;
 	font-size: 1em;
 	margin-bottom: 1em;
 	display:inline-block;
@@ -1591,7 +1590,7 @@ a.add-re:hover{
 	width:20px;
 	height:20px;
 	outline: none;
-	border: 2px solid #FA4747;
+	border: 2px solid #FF4A4A;
 }
 .checkbox input + i:after {
 	content: '';
@@ -1623,7 +1622,7 @@ a.add-re:hover{
 	color:#000;
 }
 .register-bottom-grid input[type="submit"] {
-	background: #FA4747;
+	background: #FF4A4A;
 	padding: 0.4em 1em;
 	color: #fff;
 	font-size:1.2em;
@@ -1678,7 +1677,7 @@ a.add-re:hover{
 	padding:7px 20px;
 	color:#FFF;
 	cursor:pointer;
-	background:#FA4747;
+	background:#FF4A4A;
 	border:none;
 	width:20%;
    margin:1em auto 0;
@@ -1699,7 +1698,7 @@ a.add-re:hover{
 .five {
   background: #fff;
   border-radius: 100px;
-  border: 2px solid #FA4747;
+  border: 2px solid #FF4A4A;
   width: 100px;
   height: 100px;
   position: absolute;
@@ -1710,7 +1709,7 @@ a.add-re:hover{
 }
 .five span {
   font-size: 1em;
-  color:#FA4747;
+  color:#FF4A4A;
 }
 .five h2 {
   font-size: 1.5em;
@@ -1721,7 +1720,7 @@ a.create {
   text-decoration: none;
   color: #fff;
   padding: 7px 20px;
-  background:#FA4747;
+  background:#FF4A4A;
   text-align: center;
   display: block;
  }
@@ -1855,7 +1854,7 @@ a.create {
   position: relative;
 }
 a.order {
-  background:#FA4747;
+  background:#FF4A4A;
   padding: 10px 20px;
    font-family: 'Lato', sans-serif;
   font-size: 1em;
@@ -1887,7 +1886,7 @@ a.order:hover{
 	margin-right:6em;
 }
 a.cpns{
-	background:#FA4747;
+	background:#FF4A4A;
 	color:#fff;
 	 font-family: 'Lato', sans-serif;
 	padding: 10px;
@@ -1910,7 +1909,7 @@ a.cpns:hover{
 	text-decoration:underline;
 }
 a.continue{
-	background:#FA4747;
+	background:#FF4A4A;
 	padding:10px 20px;
 	  font-family: 'Lato', sans-serif;
 	font-size:1em;
@@ -2929,5 +2928,4 @@ a.item_add p.number {
 .amet-sed {
     width: 100%;
 }
-
 }

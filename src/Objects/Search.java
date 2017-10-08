@@ -27,7 +27,6 @@ public class Search {
         ArrayList<Item> results = new ArrayList<>();
         ArrayList<Item> data = new ArrayList<>(items.values());
         for (Item item: data) {
-
             String itemName = item.getName().toLowerCase();
             itemName = itemName.replaceAll("\\s+$", "");
             String searchName = search.toLowerCase();
@@ -36,6 +35,10 @@ public class Search {
             {
                 results.add(item);
             }
+        }
+        if(search.toLowerCase().equals("all"))
+        {
+            return new ArrayList<>(items.values());
         }
         return results;
     }

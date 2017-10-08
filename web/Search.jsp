@@ -16,10 +16,11 @@
     <%
         String search;
         Search search1 = new Search();
-        ArrayList<Item> results = new ArrayList<>();
+        ArrayList results = new ArrayList();
         if(request.getParameter("searchBox") != null)
         {
             search = request.getParameter("searchBox");
+            //System.out.println(search);
             results = search1.search(search);
             session.setAttribute("results", results);
         }
@@ -27,7 +28,7 @@
         for
         */
         //System.out.println(object.toString());
-        response.sendRedirect("/checkout.jsp");
+        response.sendRedirect("/products.jsp");
     %>
 
 </body>
