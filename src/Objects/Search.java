@@ -12,6 +12,10 @@ public class Search {
         importData();
     }
 
+    public TreeMap<String, Item> getItems() {
+        return items;
+    }
+
     public void importData()
     {
         ObjectIO objectIO = new ObjectIO(new File("data1.dta"));

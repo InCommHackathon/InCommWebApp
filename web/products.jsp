@@ -108,8 +108,9 @@
 					%>
 					<div class="col-md-6 bottom-cd simpleCart_shelfItem">
 						<div class="product-at ">
-							<form method="post">
-							<a href="Servlet" id="<%=item.getName()%>"><img class="img-responsive" width="50" height="100" src="images/results/<%=item.getName()%>.png" alt="" onclick="<%session.setAttribute("ids", item.getName());%>">
+							<form method="post" action="addToCart.jsp">
+								<!--width="50" height="100"-->
+							<a href="addToCart.jsp?id=<%=item.getName()%>" id="<%=item.getName()%>"><input type="image" class="img-responsive"  src="images/results/<%=item.getName()%>.png" alt="" id="<%session.setAttribute("ids", item.getName());%>">
 								<div class="pro-grid">
 										<span class="buy-in">Order Now</span>
 							</div>

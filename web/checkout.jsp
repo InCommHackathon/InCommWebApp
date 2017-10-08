@@ -2,10 +2,11 @@
 <%@ page import="Objects.Item" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="java.text.DecimalFormat" %>
+<%@ page import="Objects.Search" %>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Sample Site</title>
+<title></title>
 <link href="CSS/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <script src="js/jquery.min.js"></script>
@@ -33,19 +34,6 @@
 <%
 	Cart cart = new Cart();
 
-	Item item = new Item();
-	item.setName("Camera #1");
-	item.setPrice(5.00);
-	item.setQuantity(5);
-
-	Item item1 = new Item();
-	item1.setName("Camera #2");
-	item1.setPrice(5.00);
-	item1.setQuantity(5);
-
-	cart.addItemToCart(item);
-	cart.addItemToCart(item1);
-
 	if(session.getAttribute("cart") != null)
 	{
 		cart = (Cart) session.getAttribute("cart");
@@ -53,6 +41,17 @@
 	else {
 		session.setAttribute("cart", cart);
 	}
+	Search search = new Search();
+	search.importData();
+	Item item;
+	if(session.getAttribute("item") != null) {
+	    item = search.getItems().get(session.getAttribute("item").toString());
+	    cart.addItemToCart(item);
+	    session.setAttribute("cart", cart);
+		session.setAttribute("item", null);
+
+	}
+
 	DecimalFormat df = new DecimalFormat("0.00");
 %>
 
@@ -121,7 +120,7 @@
 	<!-- grow -->
 <div class="container">
 	<div class="check">
-			 <h1>My Shopping Bag (2)</h1>
+			 <h1>My Shopping Bag (<%=cart.getItems().size()%>)</h1>
 		 <div class="col-md-9 cart-items">
 
 				<script>$(document).ready(function(c) {
@@ -143,17 +142,23 @@ MagicThumbOptions = {
     'expandSpeed':'1000',
     'expandEffect':'fade'
 }
-</script>
+
+    }
+				 </script>
+
+			 <%
+				 for (Item item1: cart.getItems()) {
+			 %>
 			 <div class="cart-header">
 				 <div class="close1"> </div>
 				 <div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
-							<a href="/images/item1.png" class="MagicThumb"><img src="/images/item1.png"/></a>
+							<a href="/images/results/<%=item1.getName()%>.png" class="MagicThumb"><img src="/images/results/<%=item1.getName()%>.png"/></a>
 						</div>
 					   <div class="cart-item-info">
-						<h3><a href="#">Camera 1</a><span>Model No: 3578</span></h3>
+						<h3><a href="#"><%=item1.getName()%></a><span></span></h3>
 						<ul class="qty">
-							<li><p>Qty : 1</p></li>
+							<li><p>Qty : <%=item1.getQuantity()%></p></li>
 						</ul>
 
 							 <div class="delivery">
@@ -164,6 +169,9 @@ MagicThumbOptions = {
 
 				  </div>
 			 </div>
+			<%
+				}
+			%>
 			 <script>$(document).ready(function(c) {
 					$('.close2').on('click', function(c){
 							$('.cart-header2').fadeOut('slow', function(c){
@@ -172,7 +180,7 @@ MagicThumbOptions = {
 					});
 					});
 			 </script>
-			 <div class="cart-header2">
+			 <!--<div class="cart-header2">
 				 <div class="close2"> </div>
 				  <div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
@@ -192,6 +200,7 @@ MagicThumbOptions = {
 				  </div>
 			  </div>
 		 </div>
+		 //--->
 		  <div class="col-md-3 cart-total">
 			 <div class="price-details">
 				 <h3>Price Details</h3>
@@ -207,14 +216,24 @@ MagicThumbOptions = {
 
 
 			 <div class="clearfix"></div>
-
 			  <form method="post" action="Submit.jsp">
 			 		<input type="image"  src="/images/ordernow.png" name="saveForm" class="btTxt submit" id="saveForm" onclick="" /> <!-- LInk to Email Verification-->
+				  <%
+					  	String balance = "";
+					  	if(session.getAttribute("balance") != null)
+						{
+						    balance = (String) session.getAttribute("balance");
+							if(balance.equals("false")) {
+				  		%>
+				  				<br>You do not have enough funds for this purchase
+				  		<%
+							}
+						}
+				  %>
 			  </form>
 			  <div class="total-item">
 			 </div>
 			</div>
-
 			<div class="clearfix"> </div>
 	 </div>
 	 </div>

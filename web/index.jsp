@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
-<title>Sample Site</title>
+<title>Home</title>
 <!-- Custom Theme files -->
 <link href="CSS/CSS.css" rel="stylesheet" type="text/css" media="all"/>
 <!-- Custom Theme files -->

@@ -13,9 +13,10 @@
 <body>
 
 <%
-    String names = request.getParameter("ids");
-    System.out.println(names);
-    //response.sendRedirect("/checkout.jsp");
+    String name = request.getParameter("id");
+    session.setAttribute("item", name);
+    System.out.println(name);
+    response.sendRedirect("/checkout.jsp");
 %>
 </body>
 </html>

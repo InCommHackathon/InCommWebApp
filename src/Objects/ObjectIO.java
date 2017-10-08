@@ -10,7 +10,7 @@ public class ObjectIO {
     private File objectFile;
 
     public ObjectIO(File objectFile) {
-        this.objectFile = new File(getApplicationDataFolder().getAbsoluteFile() + File.separator + objectFile.getName());
+        this.objectFile = new File(objectFile.getName());
     }
 
     public ObjectIO() {

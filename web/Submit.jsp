@@ -1,4 +1,5 @@
-<%@ page import="Objects.Cart" %><%--
+<%@ page import="Objects.Cart" %>
+<%@ page import="Objects.Customer" %><%--
   Created by IntelliJ IDEA.
   User: mandre3
   Date: 10/7/2017
@@ -10,9 +11,17 @@
 <head>
     <title>Title</title>
     <%
-    Cart cart = (Cart) session.getAttribute("cart");
-    cart.checkout();
-    response.sendRedirect("https://www.gmail.com");
+        Cart cart = (Cart) session.getAttribute("cart");
+        if(!cart.checkBalance())
+        {
+            session.setAttribute("balance", cart.checkBalance() + "");
+            response.sendRedirect("checkout.jsp");
+        }
+        else if(cart.checkBalance()) {
+            cart.checkout();
+            session.setAttribute("cart", new Cart());
+            response.sendRedirect("https://www.gmail.com");
+        }
     %>
 </head>
 <body>
