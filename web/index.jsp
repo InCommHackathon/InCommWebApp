@@ -17,9 +17,9 @@
 	<img src="../images/incomm.png" />
 
 	<div class="s-bar">
-	   <form action="checkout.jsp">
-		<input type="text" value="Enter an Item (Example: Camera)" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter an Item (Example: Camera)';}">
-		<input type="submit"  value="Search" />
+	   <form name="test" action="Search.jsp" method="post">
+		<input type="text" value="Enter an Item (Example: Camera)" name="searchBox" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Enter an Item (Example: Camera)';}">
+		<input type="submit"  value="Search" name="search"/>
 	  </form>
 
 	</div>

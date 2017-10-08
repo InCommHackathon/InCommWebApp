@@ -1,14 +1,15 @@
 package Objects;
 
-import java.text.DecimalFormat;
-import java.util.Random;
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  *
  * @author brandoncarter
  */
-public class Item {
+public class Item implements Serializable {
 
     private String name;
     private double price;
@@ -41,21 +42,23 @@ public class Item {
     public static void main(String[] args) {
         
         Scanner input = new Scanner (System.in);
-        double min = 0;
-        double max = 1000;
-        int quanity = 5;
-        DecimalFormat df = new DecimalFormat("0.00");
-        
-        System.out.println("Enter Item:");
-        String item = input.nextLine();
-        
-        Random r = new Random();
-        double randomValue = min + (max - min) * r.nextDouble();
-        
-        System.out.println("Price: S" + df.format(randomValue));
-        
-        System.out.println("Quanity: " + quanity);
-        
+        ArrayList<Item> items = new ArrayList<>();
+        while(true)
+        {
+            Item item = new Item();
+            System.out.print("Enter a name: ");
+            item.setName(input.nextLine());
+            item.setQuantity(1);
+            System.out.print("Enter a price: ");
+            item.setPrice(Double.parseDouble(input.nextLine()));
+            if(item.getPrice() == 0.0 || item.getName().equals("0"))
+            {
+                break;
+            }
+            items.add(item);
+        }
+        ObjectIO objectIO = new ObjectIO(new File("data.dta"));
+        objectIO.writeObject(items);
                 
     }
     

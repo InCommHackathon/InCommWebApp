@@ -1,8 +1,7 @@
 <%@ page import="Objects.Cart" %>
 <%@ page import="Objects.Item" %>
-<%@ page import="io.swagger.client.ApiException" %>
-<%@ page import="Exceptions.NotEnoughFundsException" %>
-<%@ page import="javax.swing.*" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.text.DecimalFormat" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,8 +15,7 @@
 <!--//theme-style-->
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Mattress Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
+
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!--fonts-->
 <link href='//fonts.googleapis.com/css?family=Lato:100,300,400,700,900' rel='stylesheet' type='text/css'>
@@ -27,9 +25,37 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <script type="text/javascript" src="js/memenu.js"></script>
 <script>$(document).ready(function(){$(".memenu").memenu();});</script>
 <script src="js/simpleCart.min.js"> </script>
+<link href="magicthumb/magicthumb.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="magicthumb/magicthumb.js"></script>
 </head>
 <body>
 <!--header-->
+<%
+	Cart cart = new Cart();
+
+	Item item = new Item();
+	item.setName("Camera #1");
+	item.setPrice(5.00);
+	item.setQuantity(5);
+
+	Item item1 = new Item();
+	item1.setName("Camera #2");
+	item1.setPrice(5.00);
+	item1.setQuantity(5);
+
+	cart.addItemToCart(item);
+	cart.addItemToCart(item1);
+
+	if(session.getAttribute("cart") != null)
+	{
+		cart = (Cart) session.getAttribute("cart");
+	}
+	else {
+		session.setAttribute("cart", cart);
+	}
+	DecimalFormat df = new DecimalFormat("0.00");
+%>
+
 <div class="header">
 	<div class="header-top">
 		<div class="container">
@@ -67,7 +93,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<a href="checkout.jsp">
 						<h3> <div class="total">
 							<span class="simpleCart_total"></span> </div>
-						</h3>
 						</a>
 						<p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
 
@@ -113,11 +138,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     			$(this).attr('height', '300');
 }					);
 				 </script>
+				 <script type="text/javascript">
+MagicThumbOptions = {
+    'expandSpeed':'1000',
+    'expandEffect':'fade'
+}
+</script>
 			 <div class="cart-header">
 				 <div class="close1"> </div>
 				 <div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
-							<a href="/images/camera2.1.png" class="MagicThumb"><img src="/images/camera2.1.png"/></a>
+							<a href="/images/item1.png" class="MagicThumb"><img src="/images/item1.png"/></a>
 						</div>
 					   <div class="cart-item-info">
 						<h3><a href="#">Camera 1</a><span>Model No: 3578</span></h3>
@@ -145,7 +176,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				 <div class="close2"> </div>
 				  <div class="cart-sec simpleCart_shelfItem">
 						<div class="cart-item cyc">
-							<a href="/images/camera2.1.png" class="MagicThumb"><img src="/images/camera2.1.png"/></a>
+							 <a href="/images/camera2.1.png" class="MagicThumb"><img src="/images/camera2.1.png"/></a>
 						</div>
 					   <div class="cart-item-info">
 						<h3><a href="#">Camera 2</a><span>Model No: 3578</span></h3>
@@ -165,29 +196,22 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			 <div class="price-details">
 				 <h3>Price Details</h3>
 				 <span>Total</span>
-				 <span class="total1">00.00</span>
+				 <span class="total1"><%="$" + df.format(cart.getSubtotal() * 1.07)%></span>
 				 <div class="clearfix"></div>
 			 </div>
 			 <ul class="total_price">
 			   <li class="last_price"> <h4>TOTAL</h4></li>
-			   <li class="last_price"><span>00.00</span></li>
+			   <li class="last_price"><span><%="$" + df.format(cart.getSubtotal() * 1.07)%></span></li>
 			   <div class="clearfix"> </div>
 			 </ul>
 
-			  <%
-
-			  %>
-				<script type="application/javascript">
-                    function notEnoughFunds() {
-                        alert("You do not have enough funds for this purchase");
-                    }
-                </script>
 
 			 <div class="clearfix"></div>
-			 <a class="order" onsubmit="<%if((int inte = session.getAttribute("order")) != true)
-			     {System.out.println(cart.checkBalance());
-			     }%>" >Place Order</a> <!-- Link to Email Verification-->
-			 <div class="total-item">
+
+			  <form method="post" action="Submit.jsp">
+			 		<input type="image"  src="/images/ordernow.png" name="saveForm" class="btTxt submit" id="saveForm" onclick="" /> <!-- LInk to Email Verification-->
+			  </form>
+			  <div class="total-item">
 			 </div>
 			</div>
 

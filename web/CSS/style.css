@@ -10,6 +10,9 @@ body{
 	-moz-transition: 0.5s all;
 	-ms-transition: 0.5s all;
 }
+ #saveForm{
+	 padding-right: 50px;
+ }
 ul{
 	padding: 0;
 	margin: 0;
@@ -2926,4 +2929,5 @@ a.item_add p.number {
 .amet-sed {
     width: 100%;
 }
+
 }
